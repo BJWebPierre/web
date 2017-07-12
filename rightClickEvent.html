@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+				<!--移动设备优先-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--IE兼容-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="shortcut icon" type="image/ico" href="/staticres/image/favicon.ico" />
+		<!--ico图标-->
+		<!--<script type="text/javascript" src="/staticres/js/parent.js"></script>-->
+
+		<meta name="keywords" content="seo关键词西文逗号隔开" />
+		<meta name="description" content="seo内容描述" />
+		<title></title>
+		<style type="text/css">
+			body{ 
+					position:relative;
+				}  
+			ul,li{ 
+					margin:0; 
+					padding:0; 
+					list-style:none; 
+					font-size:12px;
+				}  
+			ul li:first-child{
+				border-top:none;
+			}
+			.popup_menu{
+					position:absolute; 
+					z-index:90; 
+					border:1px solid #C3CCDD;  
+					width:200px;
+					box-shadow: 1px 3px 2px 0.5px;
+				}
+			.img{
+				vertical-align: middle;
+				height: 17px;
+				margin-right: 8px;
+			} 
+			.popup_menu a{
+					border-bottom: 1px solid #C2CCD1;
+					display:block; 
+					color:#325B8E;
+					text-indent:12px; 
+					text-decoration:none; 
+					height:32px; 
+					line-height:32px; 
+					text-align: left;
+				}
+				 
+			.popup_menu a:hover{ 
+					background:#EEF1F6; 	
+				}
+		</style>
+	</head>
+	<body>
+		<!--<div class="popup_menu">
+			<ul>
+				<li><a href="javascript:;">弹出框</a></li>
+			</ul>
+		</div>-->
+	</body>
+</html>
+<script src="../../../staticres/js/jquery/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+   		$(document).bind("contextmenu",function(e)
+   		{
+   			return false;
+   		});
+	});
+
+var kyoPopupMenu={};  
+    kyoPopupMenu = (function(){
+//  	$('.popup_menu a[menu="menu1"]').on('click',function(){
+//  		window.location.href="http://www.baidu.com"
+//  	})
+	    return {  
+	        sys: function (obj) {  
+	            $('.popup_menu').remove();
+	            //添加内容
+            	popupMenuApp = $(
+            	'<div class="popup_menu app-menu"><ul><li><a menu="menu1"><img src="../../../staticres/css/zTreeStyle/img/diy/7.png" class="img">返回</a></li><li><a menu="menu2"><img src="../../../staticres/css/zTreeStyle/img/diy/7.png" class="img">重新加载</a></li><li><a menu="menu3"><img src="../../../staticres/css/zTreeStyle/img/diy/7.png" class="img">添加</a></li><li><a menu="menu4"><img src="../../../staticres/css/zTreeStyle/img/diy/7.png" class="img">删除</a></li><li><a menu="menu5"><img src="../../../staticres/css/zTreeStyle/img/diy/7.png" class="img">导入数据</a></li><li><a menu="menu6"><img src="../../../staticres/css/zTreeStyle/img/diy/7.png" class="img">导出数据</a></li></ul></div>')
+            .find('a').attr('href','javascript:;')  
+            .end().appendTo('body');  
+            //绑定事件  
+            $('.app-menu a[menu="menu1"]').on('click', function (){  
+                window.location.href="http://www.baidu.com";  
+            });  
+            $('.app-menu a[menu="menu2"]').on('click', function (){  
+                window.location.href="http://www.baidu.com";  
+            });  
+            $('.app-menu a[menu="menu3"]').on('click', function (){  
+                 window.location.href="http://www.baidu.com";  
+            });
+            $('.app-menu a[menu="menu4"]').on('click', function (){  
+                 window.location.href="http://www.baidu.com";  
+            });
+            $('.app-menu a[menu="menu5"]').on('click', function (){  
+                 window.location.href="http://www.baidu.com";  
+            });
+            $('.app-menu a[menu="menu6"]').on('click', function (){  
+                 window.location.href="http://www.baidu.com";  
+            });
+//			for(var i = 0;i<app-menu.length;i++)
+//			{
+//				$('.app-menu a[menu="menu[i]"]').on('click', function (){  
+//              window.location.href="http://www.baidu.com";  
+//          });
+//			}
+            
+            return popupMenuApp;  
+        }  
+    }
+})();
+    //取消右键  
+    $('html').on('contextmenu', function (){return false;}).click(function(){  
+        $('.popup_menu').hide();  
+    });  
+    //桌面点击右击  
+    $('html').on('contextmenu',function (e){  
+        var popupmenu = kyoPopupMenu.sys();  
+        l = ($(document).width() - e.clientX) < popupmenu.width() ? (e.clientX - popupmenu.width()) : e.clientX;  
+        t = ($(document).height() - e.clientY) < popupmenu.height() ? (e.clientY - popupmenu.height()) : e.clientY;  
+		popupmenu.css({left: l,top: t}).show();  
+        return false;  
+    })
+</script>
